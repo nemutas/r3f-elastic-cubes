@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/r3f-elastic-cubes/static/css/main.0ac67166.css",
+    "main.js": "/r3f-elastic-cubes/static/js/main.de6d29f7.js",
+    "static/js/787.7417e31e.chunk.js": "/r3f-elastic-cubes/static/js/787.7417e31e.chunk.js",
+    "index.html": "/r3f-elastic-cubes/index.html",
+    "main.0ac67166.css.map": "/r3f-elastic-cubes/static/css/main.0ac67166.css.map",
+    "main.de6d29f7.js.map": "/r3f-elastic-cubes/static/js/main.de6d29f7.js.map",
+    "787.7417e31e.chunk.js.map": "/r3f-elastic-cubes/static/js/787.7417e31e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0ac67166.css",
+    "static/js/main.de6d29f7.js"
+  ]
+}
