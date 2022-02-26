@@ -75,9 +75,11 @@ const OuterCubes: VFC = () => {
 	// --------------------------------------------
 	// add controller
 
-	const gui = GUIController.instance.setFolder('uniforms')
+	const gui = GUIController.instance.setFolder('Uniforms')
 	gui.addNumericSlider(outerCubeState, 'noiseScale', 0.01, 1, 0.01, 'Noise Scale')
 	gui.addNumericSlider(outerCubeState, 'noiseSpeed', 0.1, 2, 0.1, 'Noise Speed')
+	gui.setFolder('Box')
+	gui.addCheckBox(outerCubeState, 'receiveShadow', 'Receive Shadow')
 
 	// --------------------------------------------
 	// create position
@@ -161,9 +163,11 @@ const OuterCubes: VFC = () => {
 			depthMaterial.uniforms.u_noiseScale.value = outerCubeState.noiseScale
 			depthMaterial.uniforms.u_noiseSpeed.value = outerCubeState.noiseSpeed
 		}
+
+		meshRef.current!.receiveShadow = outerCubeState.receiveShadow
 	})
 
-	return <instancedMesh ref={meshRef} args={[geometry, material, amount]} castShadow receiveShadow />
+	return <instancedMesh ref={meshRef} args={[geometry, material, amount]} castShadow />
 }
 
 const vertexShaderDefines = `

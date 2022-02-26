@@ -2,41 +2,33 @@ import React, { useRef, VFC } from 'react';
 import THREE from 'three';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { useFrame } from '@react-three/fiber';
-
-const datas = {
-	enabled: true,
-	focus: 0.1,
-	blur: 1,
-	samples: 20
-}
+import { GUIController } from '../../modules/gui';
+import { focusState } from '../../modules/store';
 
 export const FocusPass: VFC = () => {
 	const passRef = useRef<ShaderPass>(null)
 
-	// const gui = GUIController.instance.setFolder('CustomFocus')
-	// gui.addCheckBox(datas, 'enabled')
-	// gui.addNumericSlider(datas, 'focus', -0.5, 0.5, 0.01)
-	// gui.addNumericSlider(datas, 'blur', 0, 1, 0.01)
-	// gui.addNumericSlider(datas, 'samples', 10, 100, 10)
+	const gui = GUIController.instance.setFolder('Post-processing')
+	gui.addCheckBox(focusState, 'enabled')
 
 	const shader: THREE.Shader = {
 		uniforms: {
 			tDiffuse: { value: null },
-			u_focus: { value: datas.focus },
-			u_blur: { value: datas.blur },
-			u_samples: { value: datas.samples }
+			u_focus: { value: focusState.focus },
+			u_blur: { value: focusState.blur },
+			u_samples: { value: focusState.samples }
 		},
 		vertexShader: vertexShader,
 		fragmentShader: fragmentShader
 	}
 
 	const update = () => {
-		passRef.current!.enabled = datas.enabled
+		passRef.current!.enabled = focusState.enabled
 
-		if (datas.enabled) {
-			passRef.current!.uniforms.u_focus.value = datas.focus
-			passRef.current!.uniforms.u_blur.value = datas.blur
-			passRef.current!.uniforms.u_samples.value = datas.samples
+		if (focusState.enabled) {
+			passRef.current!.uniforms.u_focus.value = focusState.focus
+			passRef.current!.uniforms.u_blur.value = focusState.blur
+			passRef.current!.uniforms.u_samples.value = focusState.samples
 		}
 	}
 
