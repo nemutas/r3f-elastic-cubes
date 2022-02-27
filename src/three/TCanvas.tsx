@@ -24,7 +24,13 @@ export const TCanvas: VFC = () => {
 			{/* scene */}
 			<Background color="#88bedf" />
 			{/* camera controller */}
-			<OrbitControls attach="orbitControls" enablePan={false} enableRotate={false} />
+			<OrbitControls
+				attach="orbitControls"
+				enablePan={false}
+				dampingFactor={0.02}
+				minPolarAngle={Math.PI / 2}
+				maxPolarAngle={Math.PI / 2}
+			/>
 			{/* lights */}
 			<Lights />
 			<ContactShadows
